@@ -1,7 +1,7 @@
 name: Deploy to GitHub Pages
+
 on:
-  push:
-    branches: [ main ]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -11,15 +11,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm ci
-      - run: npm run build
+          cache: yarn
+          cache-dependency-path: back2front/yarn.lock
 
-      # Fix deep-link 404s for React Router (safe even if you don't use it)
-      - run: cp build/index.html build/404.html
-      - uses: peaceiris/actions-gh-pages@v3
+      - name: Install deps
+        working-directory: back2front
+        run: yarn install --frozen-lockfile
+
+      - name: Build
+        working-directory: back2front
+        run: yarn build
+
+      - name: SPA fallback (React Router)
+        run: cp back2front/build/index.html back2front/build/404.html
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: back2front/build
