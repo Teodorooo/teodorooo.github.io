@@ -30,7 +30,7 @@ function Videos() {
                   NGINX web server, load balancer & auto-scalling on the background
                 </li>
                 <li>
-                  My Terraform and React Github repositories are under the video description
+                  My Terraform and React Github repos are under the video description
                 </li>
               </h3>
             </ul>
