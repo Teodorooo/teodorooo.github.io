@@ -12,6 +12,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Debug - list files
+        run: |
+          pwd
+          ls -la
+          find . -maxdepth 3 -type f -name "package.json" -o -name "yarn.lock"
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
