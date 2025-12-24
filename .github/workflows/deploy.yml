@@ -16,7 +16,6 @@ jobs:
         with:
           node-version: 20
           cache: yarn
-          cache-dependency-path: back2front/yarn.lock
 
       - name: Install deps
         working-directory: back2front
@@ -26,7 +25,7 @@ jobs:
         working-directory: back2front
         run: yarn build
 
-      - name: SPA fallback (React Router)
+      - name: SPA fallback
         run: cp back2front/build/index.html back2front/build/404.html
 
       - name: Deploy
