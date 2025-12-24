@@ -6,6 +6,16 @@ on:
 permissions:
   contents: write
 
+# What this workflow does:
+
+# install deps
+
+# yarn build
+
+# push the built files to the gh-pages branch
+
+# GitHub Pages takes what’s on the publishing source and deploys it to the Pages CDN
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
