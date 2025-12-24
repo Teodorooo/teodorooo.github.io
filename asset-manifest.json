@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b45a5a8b.css",
+    "main.js": "/static/js/main.7d4f9238.js",
+    "static/js/38.a03c8a65.chunk.js": "/static/js/38.a03c8a65.chunk.js",
+    "static/media/video-compressed.mp4": "/static/media/video-compressed.5edea443687b873a6995.mp4",
+    "static/media/me_coloured.jpg": "/static/media/me_coloured.918a7dfabc9989aaf9c1.jpg",
+    "static/media/sculpture_gold.jpg": "/static/media/sculpture_gold.9bc2001305f24e84d350.jpg",
+    "static/media/me_bw.jpg": "/static/media/me_bw.c0cd5cee13268daf93ad.jpg",
+    "static/media/mistery_man.jpg": "/static/media/mistery_man.30a30797bb24d10eb07e.jpg",
+    "static/media/sculpture.jpg": "/static/media/sculpture.5e9bf893775160a557d9.jpg",
+    "static/media/sculpture_black.jpg": "/static/media/sculpture_black.dccdbf7a20def24e14eb.jpg",
+    "static/media/France FULL.jpg": "/static/media/France FULL.312efa4ff27bf56a26b5.jpg",
+    "static/media/Outdoor Bath FULL.jpg": "/static/media/Outdoor Bath FULL.9e6447e8f9b9f2ee55a2.jpg",
+    "static/media/San Pedro Cactus FULL.jpg": "/static/media/San Pedro Cactus FULL.ed5debaf53fcaca30cba.jpg",
+    "static/media/Sea FULL.jpg": "/static/media/Sea FULL.f412880e4a3ba21c6eb3.jpg",
+    "static/media/Seaside FULL.jpg": "/static/media/Seaside FULL.5f7572e9e126027ed3bd.jpg",
+    "static/media/Cruise FULL.jpg": "/static/media/Cruise FULL.031b6c2220eae5db0958.jpg",
+    "static/media/River FULL.jpg": "/static/media/River FULL.1cb75a5a780dfb620511.jpg",
+    "static/media/Pool FULL.png": "/static/media/Pool FULL.7ceb9362fcdb07b6adfb.png",
+    "static/media/Thunder FULL.jpg": "/static/media/Thunder FULL.a07a95f103a419fcf977.jpg",
+    "static/media/Mountains FULL.jpg": "/static/media/Mountains FULL.5656b6984b15d32dfe5d.jpg",
+    "static/media/Bath Chill FULL.jpg": "/static/media/Bath Chill FULL.a21779010a038685627f.jpg",
+    "static/media/Countryside FULL.jpg": "/static/media/Countryside FULL.57bf83053d7adb12069b.jpg",
+    "static/media/spinner.gif": "/static/media/spinner.11d9cde8ebaeadb07ba7.gif",
+    "static/media/logo.png": "/static/media/logo.e6ecab4407f10ecd02bd.png",
+    "index.html": "/index.html",
+    "main.b45a5a8b.css.map": "/static/css/main.b45a5a8b.css.map",
+    "main.7d4f9238.js.map": "/static/js/main.7d4f9238.js.map",
+    "38.a03c8a65.chunk.js.map": "/static/js/38.a03c8a65.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b45a5a8b.css",
+    "static/js/main.7d4f9238.js"
+  ]
+}
