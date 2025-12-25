@@ -21,7 +21,7 @@ function Videos() {
             <ul>
               <h3>
               <li>
-                  A multi-stage stage Dockerfile is used
+                  A multi-stage stage Dockerfile is used in this process
                 </li>
                 <li>
                   Terraform pulls the Image from AWS ECR 
