@@ -6,6 +6,7 @@ import backgroundvideo from '../../videos/video-compressed.mp4';
 import '../Cards.css'
 import me_bw from "../../images/Mr bean faces/me_bw.jpg";
 import me_coloured from "../../images/Mr bean faces/me_coloured.jpg";
+import techcv from "../../images/Mr bean faces/tech cv.png";
 import { useState, useEffect } from "react";
 
 function Me() {
@@ -19,7 +20,7 @@ function Me() {
         revealed: me_bw,
         srcColoured: me_coloured,
         header: "Who am I?",
-        subj: "Imma 16yo thirsty fo'some dough.",
+        subj: "This is my cv.",
       }
 
 return (
@@ -40,12 +41,19 @@ return (
               alt=""
               className="cards__item__img top"
             />
+
           </div>
 
           <div className="text-block">
             <h1>{card.header}</h1>
             <h2>{card.subj}</h2>
+
           </div>
+            <img
+              src={techcv}
+              alt=""
+              className="cv"
+            />
         </div>
       </div>
     );

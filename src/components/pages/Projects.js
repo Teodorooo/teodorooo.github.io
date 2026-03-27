@@ -19,7 +19,7 @@ function Projects() {
         revealed: sculpture_gold,
         srcColoured: sculpture,
         header: "Projects:",
-        subj: "Izvolite...",
+        subj: "This is my Risk python game",
       }
 
 return (
@@ -46,6 +46,11 @@ return (
             <h1>{card.header}</h1>
             <h2>{card.subj}</h2>
           </div>
+          <iframe 
+            src="https://risk-game-iuhi.onrender.com"
+            width="100%" 
+            height="800px"
+          ></iframe>
         </div>
       </div>
     );

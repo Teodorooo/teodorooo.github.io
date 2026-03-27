@@ -194,3 +194,11 @@ footer {
 .cards__item__info {
   margin-bottom: 0.5rem;
 }
+
+.cv {
+  display: flex;
+  flex-direction: column;
+  max-width: 40%;
+  margin: 0 auto;
+  position: relative;
+}
