@@ -1,15 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.bc8931ec.css",
-    "main.js": "/static/js/main.9351ee3f.js",
-    "static/js/38.a03c8a65.chunk.js": "/static/js/38.a03c8a65.chunk.js",
+    "main.css": "/static/css/main.ab1ae35e.css",
+    "main.js": "/static/js/main.b8d6aa82.js",
     "static/media/video-compressed.mp4": "/static/media/video-compressed.5edea443687b873a6995.mp4",
     "static/media/me_coloured.jpg": "/static/media/me_coloured.918a7dfabc9989aaf9c1.jpg",
     "static/media/sculpture_gold.jpg": "/static/media/sculpture_gold.9bc2001305f24e84d350.jpg",
     "static/media/me_bw.jpg": "/static/media/me_bw.c0cd5cee13268daf93ad.jpg",
     "static/media/mistery_man.jpg": "/static/media/mistery_man.30a30797bb24d10eb07e.jpg",
     "static/media/sculpture.jpg": "/static/media/sculpture.5e9bf893775160a557d9.jpg",
-    "static/media/sculpture_black.jpg": "/static/media/sculpture_black.dccdbf7a20def24e14eb.jpg",
     "static/media/France FULL.jpg": "/static/media/France FULL.312efa4ff27bf56a26b5.jpg",
     "static/media/Outdoor Bath FULL.jpg": "/static/media/Outdoor Bath FULL.9e6447e8f9b9f2ee55a2.jpg",
     "static/media/San Pedro Cactus FULL.jpg": "/static/media/San Pedro Cactus FULL.ed5debaf53fcaca30cba.jpg",
@@ -26,12 +24,11 @@
     "static/media/spinner.gif": "/static/media/spinner.11d9cde8ebaeadb07ba7.gif",
     "static/media/logo.png": "/static/media/logo.e6ecab4407f10ecd02bd.png",
     "index.html": "/index.html",
-    "main.bc8931ec.css.map": "/static/css/main.bc8931ec.css.map",
-    "main.9351ee3f.js.map": "/static/js/main.9351ee3f.js.map",
-    "38.a03c8a65.chunk.js.map": "/static/js/38.a03c8a65.chunk.js.map"
+    "main.ab1ae35e.css.map": "/static/css/main.ab1ae35e.css.map",
+    "main.b8d6aa82.js.map": "/static/js/main.b8d6aa82.js.map"
   },
   "entrypoints": [
-    "static/css/main.bc8931ec.css",
-    "static/js/main.9351ee3f.js"
+    "static/css/main.ab1ae35e.css",
+    "static/js/main.b8d6aa82.js"
   ]
 }
