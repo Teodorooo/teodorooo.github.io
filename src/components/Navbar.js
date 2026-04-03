@@ -1,106 +1,57 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import "./Navbar.css";
-import { Button } from "./Button";
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import './Navbar.css';
+
+const NAV_LINKS = [
+  { to: '/', label: 'Home' },
+  { to: '/me', label: 'Who am I' },
+  { to: '/projects', label: 'Projects' },
+  { to: '/videos', label: 'Videos' },
+];
 
 function Navbar() {
-  const [click, setClick] = useState(false);
-  const [button, setButton] = useState(true);
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const { pathname } = useLocation();
 
-  const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
-
-  const showButton = () => {
-    if (window.innerWidth <= 9 + 60) {
-      setButton(false);
-    } else {
-      setButton(true);
-    }
-  };
+  useEffect(() => { setOpen(false); }, [pathname]);
 
   useEffect(() => {
-    showButton();
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  window.addEventListener("resize", showButton);
-
-  window.scrollTo(0, 0);
-
   return (
-    <>
-      <nav className="navbar">
-        <div className="navbar-container">
-          <div className="navbar-logo">
-            <div className="logo-id-container">
-              <Link to="/" onClick={closeMobileMenu}>
-                Back2front
-              </Link>
-              <h3
-                id="nameAd"
-                style={{
-                  fontSize: "13px",
-                  marginTop: "-6px",
-                  marginLeft: "3px",
-                }}
-              >
-                Teodoro Esquerre
-              </h3>
-            </div>
-            <Link to="/" onClick={closeMobileMenu}>
-              <div id="bolt">
-                <i className="fas fa-bolt"></i>
-              </div>
-            </Link>
-          </div>
-          <div className="menu-icon" onClick={handleClick}>
-            <i className={click ? "fas fa-times" : "fas fa-bars"} />
-          </div>
-          <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <li className="nav-item">
-              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
+    <nav className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
+      <div className="navbar-container">
+        <Link to="/" className="navbar-logo">
+          <span className="navbar-logo__brand">Back2front</span>
+          <span className="navbar-logo__sub">Teodoro Esquerre</span>
+        </Link>
+
+        <button
+          className="navbar-burger"
+          onClick={() => setOpen(o => !o)}
+          aria-label="Toggle menu"
+        >
+          <i className={open ? 'fas fa-times' : 'fas fa-bars'} />
+        </button>
+
+        <ul className={`navbar-menu${open ? ' navbar-menu--open' : ''}`}>
+          {NAV_LINKS.map(({ to, label }) => (
+            <li key={to}>
               <Link
-                to="/me"
-                className="nav-links"
-                onClick={closeMobileMenu}
+                to={to}
+                className={`navbar-link${pathname === to ? ' navbar-link--active' : ''}`}
               >
-                Who am I ?
+                {label}
               </Link>
             </li>
-            <li className="nav-item">
-              <Link
-                to="/projects"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Projects
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/lang"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Languages
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/videos"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Videos
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </>
+          ))}
+        </ul>
+      </div>
+    </nav>
   );
 }
 

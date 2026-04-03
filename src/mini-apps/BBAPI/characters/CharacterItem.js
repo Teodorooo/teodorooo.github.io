@@ -1,32 +1,27 @@
-import React from 'react'
+import React from 'react';
 
-const CharacterItem = ({ item }) => {
+function CharacterItem({ item }) {
   return (
-    <div className='card'>
-      <div className='card-inner'>
-        <div className='card-front'>
-          <img src={item.img} alt='' />
+    <div className="bbapi-card">
+      <div className="bbapi-card__inner">
+        <div className="bbapi-card__front">
+          <img src={item.img} alt={item.name} />
         </div>
-        <div className='card-back'>
+        <div className="bbapi-card__back">
           <h3>{item.name}</h3>
           <ul>
-            <li>
-              <strong>Name:</strong> {item.name}
-            </li>
-            <li>
-              <strong>Actor:</strong> {item.actor}
-            </li>
-            <li>
-              <strong>Birthday:</strong> {item.birthday}
-            </li>
-            <li>
-              <strong>Status:</strong> {item.status}
+            <li><strong>Actor:</strong> {item.actor}</li>
+            <li><strong>Birthday:</strong> {item.birthday}</li>
+            <li><strong>Status:</strong>
+              <span className={`bbapi-status bbapi-status--${item.status?.toLowerCase()}`}>
+                {' '}{item.status}
+              </span>
             </li>
           </ul>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default CharacterItem
+export default CharacterItem;

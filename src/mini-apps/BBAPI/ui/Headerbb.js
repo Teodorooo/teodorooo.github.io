@@ -1,12 +1,12 @@
-import React from 'react'
-import logo from '../BBimages/logo.png'
+import React from 'react';
+import logo from '../BBimages/logo.png';
 
-const Headerbb = () => {
+function Headerbb() {
   return (
-    <header className='center'>
-      <img src={logo} alt='' />
+    <header className="bbapi-header">
+      <img src={logo} alt="Breaking Bad" className="bbapi-logo" />
     </header>
-  )
+  );
 }
 
-export default Headerbb
+export default Headerbb;

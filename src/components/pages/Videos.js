@@ -1,68 +1,65 @@
-import React from 'react'
-import '../../App.css'
-import '../Button.css'
+import '../../App.css';
 import backgroundvideo from '../../videos/video-compressed.mp4';
 
+const videos = [
+  {
+    id: 1,
+    title: 'Terraform to Deploy a React App to AWS ECR',
+    stack: 'Terraform · Docker · AWS',
+    points: [
+      'Multi-stage Dockerfile for optimized builds',
+      'Terraform pulls the image from AWS ECR',
+      'NGINX with load balancing & auto-scaling in the background',
+      'Repos linked in the video description',
+    ],
+    youtubeId: 'F6ikuuq0aaA',
+  },
+  {
+    id: 2,
+    title: 'React Overview — How It Works & Hooks',
+    stack: 'React',
+    points: [
+      'How React works under the hood',
+      'Full overview of hooks and the rendering model',
+      'Everything you need to start building with React',
+    ],
+    youtubeId: 'sy0IiiNEjHs',
+  },
+];
+
 function Videos() {
-  window.scrollTo(0, 0);
-    return (
-      <div className="cards">
-            <video src={backgroundvideo} loop autoPlay muted />
-        <div className='hero'>
-        <h1>My videos</h1>
-        <h2 className="herosection">
-          <i class="fas fa-wrench fa-spin"></i> Ongoing construction
-        </h2>
-        </div>
-        <div className="hero-btns">
-          <h4 className="hr">Terraform to deploy a React app to AWS ECR </h4>
-          <h5 className="stack"><i class="fab fa-docker"></i> Terraform, Docker & AWS</h5>
-          <div className="description">
-            <ul>
-              <h3>
-              <li>
-                  A multi-stage stage Dockerfile is used in this process
-                </li>
-                <li>
-                  Terraform pulls the Image from AWS ECR 
-                </li>
-                <li>
-                  NGINX web server, load balancer & auto-scalling on the background
-                </li>
-                <li>
-                  My Terraform and React Github repos are under the video description
-                </li>
-              </h3>
-            </ul>
-          </div>
-          <div className="myvids">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/F6ikuuq0aaA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-        </div>
-        <div className="hero-btns">
-          <h4 className="hr">React Overview, How it works, Hooks</h4>
-          <h5 className="stack"><i class="fab fa-react"></i> React</h5>
-          <div className="description">
-            <ul>
-              <h3>
-              <li>
-                  The video is a bit crappy, but the content is really good
-                </li>
-                <li>
-                  Learn how React works under the hood
-                </li>
-                <li>
-                  This is what u need to start building with React
-                </li>
-              </h3>
-            </ul>
-          </div>
-          <div className="myvids">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/sy0IiiNEjHs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-        </div>
+  return (
+    <div className="page-container">
+      <video src={backgroundvideo} loop autoPlay muted playsInline className="bgvideo" />
+
+      <div className="page-hero">
+        <h1>Videos</h1>
+        <p>Tutorials and tech content.</p>
       </div>
-    );
+
+      <div className="video-list">
+        {videos.map(v => (
+          <div key={v.id} className="glass video-card">
+            <div className="video-card__info">
+              <h3>{v.title}</h3>
+              <p className="video-card__stack">{v.stack}</p>
+              <ul className="video-card__points">
+                {v.points.map((pt, i) => <li key={i}>{pt}</li>)}
+              </ul>
+            </div>
+            <div className="video-card__embed">
+              <iframe
+                src={`https://www.youtube.com/embed/${v.youtubeId}`}
+                title={v.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
-export default Videos
+export default Videos;

@@ -1,14 +1,12 @@
-import React from 'react'
-import spinner from '../BBimages/spinner.gif'
+import React from 'react';
+import spinner from '../BBimages/spinner.gif';
 
-const Spinner = () => {
+function Spinner() {
   return (
-    <img
-      src={spinner}
-      style={{ width: '200px', margin: 'auto', display: 'block' }}
-      alt='Loading'
-    />
-  )
+    <div className="bbapi-spinner">
+      <img src={spinner} alt="Loading..." />
+    </div>
+  );
 }
 
-export default Spinner
+export default Spinner;

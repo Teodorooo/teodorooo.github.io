@@ -1,42 +1,19 @@
-import React, { useState } from "react";
-import "./Cards.css";
-import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Cards.css';
 
-function CardItem(props) {
-  const [hovered, setHovered] = useState(false);
-  const { t } = useTranslation();
-  
+function CardItem({ src, revealed, label, text, link }) {
   return (
-    <li className="cards__item">
-      <div className="cards__item__link" onClick={props.onSelect}>
-        <figure className="cards__item__pic-wrap" data-category={props.label}>
-          <img
-            src={props.revealed}
-            alt="img"
-            className="cards__item__img bigger"
-          />
-              <Link
-                to={props.link}
-              >
-                <img                 
-                onMouseEnter={() => setHovered(true)}
-                onMouseLeave={() => setHovered(false)}
-                className={
-                  hovered
-                  ? "cards__item__img hover"
-                  : "cards__item__img"
-                  }
-                  src={props.src} 
-                  alt="misteryman" />
-              </Link>
-        </figure>
-
-        <div className="cards__item__info">
-          <h5 className="cards__item__text">{props.text}</h5>
-          <h3 className="subtext">{props.subtext}</h3>
+    <li className="card-item">
+      <Link to={link} className="card-item__link">
+        <div className="card-item__img-wrap" data-label={label}>
+          <img src={revealed} alt="" className="card-item__img card-item__img--bottom" />
+          <img src={src} alt={label} className="card-item__img card-item__img--top" />
         </div>
-      </div>
+        <div className="card-item__info">
+          <p className="card-item__text">{text}</p>
+        </div>
+      </Link>
     </li>
   );
 }

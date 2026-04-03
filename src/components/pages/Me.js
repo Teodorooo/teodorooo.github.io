@@ -1,62 +1,38 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import '../../App.css';
-import '../Button.css';
-import { Link } from 'react-router-dom';
+import '../Cards.css';
 import backgroundvideo from '../../videos/video-compressed.mp4';
-import '../Cards.css'
-import me_bw from "../../images/Mr bean faces/me_bw.jpg";
-import me_coloured from "../../images/Mr bean faces/me_coloured.jpg";
-import techcv from "../../images/Mr bean faces/tech cv.png";
-import { useState, useEffect } from "react";
+import me_bw from '../../images/Mr bean faces/me_bw.jpg';
+import me_coloured from '../../images/Mr bean faces/me_coloured.jpg';
+import techcv from '../../images/Mr bean faces/tech cv.png';
 
 function Me() {
-  window.scrollTo(0, 0);
-  const [fade, setFade] = useState(false)
-  useEffect(() => {setFade(true);}, []);
+  const [fade, setFade] = useState(false);
+  useEffect(() => { setFade(true); }, []);
 
-  const card = 
-      {
-        id: 1,
-        revealed: me_bw,
-        srcColoured: me_coloured,
-        header: "Who am I?",
-        subj: "This is my cv.",
-      }
+  return (
+    <div className="page-container">
+      <video src={backgroundvideo} loop autoPlay muted playsInline className="bgvideo" />
 
-return (
-      <div className="cards">
-        <video src={backgroundvideo} loop autoPlay muted className="bgvideo" />
-
-        <div className="single-view">
-          <div className="image-stack">
-            {/* bottom fades out */}
-            <img
-              src={card.revealed}
-              alt=""
-              className={`cards__item__img behind ${fade ? "fade" : ""}`}
-            />
-            {/* top stays visible */}
-            <img
-              src={card.srcColoured || card.src}
-              alt=""
-              className="cards__item__img top"
-            />
-
-          </div>
-
-          <div className="text-block">
-            <h1>{card.header}</h1>
-            <h2>{card.subj}</h2>
-
-          </div>
-            <img
-              src={techcv}
-              alt=""
-              className="cv"
-            />
+      <div className="single-view">
+        <div className="image-stack">
+          <img
+            src={me_bw}
+            alt=""
+            className={`image-stack__img image-stack__img--behind${fade ? ' fade' : ''}`}
+          />
+          <img src={me_coloured} alt="" className="image-stack__img image-stack__img--top" />
         </div>
-      </div>
-    );
-  }
 
-export default Me
+        <div className="text-block">
+          <h1>Who am I?</h1>
+          <h2>Full-stack developer &amp; tinkerer</h2>
+        </div>
+
+        <img src={techcv} alt="Tech CV" className="cv-img" />
+      </div>
+    </div>
+  );
+}
+
+export default Me;

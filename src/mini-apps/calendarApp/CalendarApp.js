@@ -4,90 +4,73 @@ import { Day } from './Day';
 import { NewEventModal } from './NewEventModal';
 import { DeleteEventModal } from './DeleteEventModal';
 import { useDate } from './useDate';
+import backgroundvideo from '../../videos/video-compressed.mp4';
 
-export const CalendarApp = () => {
+export function CalendarApp() {
   const [nav, setNav] = useState(0);
-  const [clicked, setClicked] = useState();
-  const [events, setEvents] = useState(
-    localStorage.getItem('events') ? 
-      JSON.parse(localStorage.getItem('events')) : 
-      []
-  );
-
-  const eventForDate = date => events.find(e => e.date === date);
+  const [clicked, setClicked] = useState(null);
+  const [events, setEvents] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('events')) || []; }
+    catch { return []; }
+  });
 
   useEffect(() => {
     localStorage.setItem('events', JSON.stringify(events));
   }, [events]);
 
   const { days, dateDisplay } = useDate(events, nav);
+  const eventForDate = date => events.find(e => e.date === date);
 
-  return(
-    <>
-      <video id="background-video" loop autoPlay>
-        <source
-          src={require("../../videos/video-compressed.mp4").default}
-          type="video/mp4"
-        />
-      </video>
-      <div id="calendarbody">
-      <div id="container">
-        <CalendarHeader 
+  return (
+    <div className="cal-page">
+      <video src={backgroundvideo} loop autoPlay muted playsInline className="bgvideo" />
+
+      <div className="cal-wrap">
+        <CalendarHeader
           dateDisplay={dateDisplay}
-          onNext={() => setNav(nav + 1)}
-          onBack={() => setNav(nav - 1)}
+          onBack={() => setNav(n => n - 1)}
+          onNext={() => setNav(n => n + 1)}
         />
 
-        <div id="weekdays">
-          <div>Sunday</div>
-          <div>Monday</div>
-          <div>Tuesday</div>
-          <div>Wednesday</div>
-          <div>Thursday</div>
-          <div>Friday</div>
-          <div>Saturday</div>
+        <div className="cal-weekdays">
+          {['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(d => (
+            <div key={d} className="cal-weekday">{d}</div>
+          ))}
         </div>
 
-        <div id="calendar">
-          {days.map((d, index) => (
+        <div className="cal-grid">
+          {days.map((d, i) => (
             <Day
-              key={index}
+              key={i}
               day={d}
-              onClick={() => {
-                if (d.value !== 'padding') {
-                  setClicked(d.date);
-                }
-              }}
+              onClick={() => { if (d.value !== 'padding') setClicked(d.date); }}
             />
           ))}
         </div>
-        </div>
       </div>
 
-      {
-        clicked && !eventForDate(clicked) &&
+      {clicked && !eventForDate(clicked) && (
         <NewEventModal
           onClose={() => setClicked(null)}
           onSave={title => {
-            setEvents([ ...events, { title, date: clicked }]);
+            setEvents(prev => [...prev, { title, date: clicked }]);
             setClicked(null);
           }}
         />
-      }
+      )}
 
-      {
-        clicked && eventForDate(clicked) &&
-        <DeleteEventModal 
+      {clicked && eventForDate(clicked) && (
+        <DeleteEventModal
           eventText={eventForDate(clicked).title}
           onClose={() => setClicked(null)}
           onDelete={() => {
-            setEvents(events.filter(e => e.date !== clicked));
+            setEvents(prev => prev.filter(e => e.date !== clicked));
             setClicked(null);
           }}
         />
-      }
-    </>
+      )}
+    </div>
   );
-};
+}
 
-export default CalendarApp
+export default CalendarApp;

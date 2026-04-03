@@ -1,14 +1,18 @@
 import React from 'react';
 
-export const Day = ({ day, onClick }) => {
-  const className = `day ${day.value === 'padding' ? 'padding' : ''} ${day.isCurrentDay ? 'currentDay' : ''}`;
-  return (
-    <div onClick={onClick} className={className}>
-      {day.value === 'padding' ? '' : day.value}
+export function Day({ day, onClick }) {
+  const cls = [
+    'cal-day',
+    day.value === 'padding' ? 'cal-day--padding' : '',
+    day.isCurrentDay ? 'cal-day--today' : '',
+  ].filter(Boolean).join(' ');
 
-      {day.event && <div className='event'>{day.event.title}</div>}
+  return (
+    <div className={cls} onClick={onClick}>
+      {day.value !== 'padding' && <span className="cal-day__num">{day.value}</span>}
+      {day.event && <div className="cal-day__event">{day.event.title}</div>}
     </div>
   );
-};
+}
 
-export default Day
+export default Day;

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Headerbb from './ui/Headerbb';
-import CharacterGrid from './characters/CharacterGrid';
 import Search from './ui/Search';
+import CharacterGrid from './characters/CharacterGrid';
 import './BbapiApp.css';
+import backgroundvideo from '../../videos/video-compressed.mp4';
 
-const BBapiApp = () => {
+function BBapiApp() {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [query, setQuery] = useState('');
@@ -14,40 +15,30 @@ const BBapiApp = () => {
     const fetchItems = async () => {
       setIsLoading(true);
       try {
-        // Fetch data from the local JSON file
-        const result = await axios('/data/characters.json');
-        
-        // Filter items based on the search query
-        const filteredItems = result.data.filter((item) =>
+        const res = await axios('/data/characters.json');
+        const filtered = res.data.filter(item =>
           item.name.toLowerCase().includes(query.toLowerCase())
         );
-
-        setItems(filteredItems);
-      } catch (error) {
-        console.error('Error fetching characters:', error);
-        setItems([]); // Fallback to an empty array on error
+        setItems(filtered);
+      } catch (err) {
+        console.error('Error fetching characters:', err);
+        setItems([]);
       }
       setIsLoading(false);
     };
-
     fetchItems();
-  }, [query]); // Re-fetch items when the query changes
+  }, [query]);
 
   return (
-    <>
-      <video id="background-video" loop autoPlay muted>
-        <source
-          src={require('../../videos/video-compressed.mp4').default}
-          type="video/mp4"
-        />
-      </video>
-      <div className="container">
+    <div className="bbapi-page">
+      <video src={backgroundvideo} loop autoPlay muted playsInline className="bgvideo" />
+      <div className="bbapi-container">
         <Headerbb />
-        <Search getQuery={(q) => setQuery(q)} />
+        <Search getQuery={setQuery} />
         <CharacterGrid isLoading={isLoading} items={items} />
       </div>
-    </>
+    </div>
   );
-};
+}
 
 export default BBapiApp;

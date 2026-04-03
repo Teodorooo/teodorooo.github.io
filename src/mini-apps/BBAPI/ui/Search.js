@@ -1,27 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-const Search = ({ getQuery }) => {
-  const [text, setText] = useState('')
+function Search({ getQuery }) {
+  const [text, setText] = useState('');
 
-  const onChange = (q) => {
-    setText(q)
-    getQuery(q)
-  }
+  const onChange = q => {
+    setText(q);
+    getQuery(q);
+  };
 
   return (
-    <section className='search'>
-      <form>
-        <input
-          type='text'
-          className='form-control'
-          placeholder='Search characters'
-          value={text}
-          onChange={(e) => onChange(e.target.value)}
-          autoFocus
-        />
-      </form>
-    </section>
-  )
+    <div className="bbapi-search">
+      <input
+        type="text"
+        className="bbapi-search__input"
+        placeholder="Search characters..."
+        value={text}
+        onChange={e => onChange(e.target.value)}
+        autoFocus
+      />
+    </div>
+  );
 }
 
-export default Search
+export default Search;

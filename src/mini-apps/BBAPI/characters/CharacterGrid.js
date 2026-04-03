@@ -1,17 +1,17 @@
-import React from 'react'
-import CharacterItem from './CharacterItem'
-import Spinner from '../ui/Spinner'
+import React from 'react';
+import CharacterItem from './CharacterItem';
+import Spinner from '../ui/Spinner';
 
-const CharacterGrid = ({ items, isLoading }) => {
-  return isLoading ? (
-    <Spinner />
-  ) : (
-    <section className='cardsbb'>
-      {items.map((item) => (
-        <CharacterItem key={item.char_id} item={item}></CharacterItem>
+function CharacterGrid({ items, isLoading }) {
+  if (isLoading) return <Spinner />;
+
+  return (
+    <section className="bbapi-grid">
+      {items.map(item => (
+        <CharacterItem key={item.char_id} item={item} />
       ))}
     </section>
-  )
+  );
 }
 
-export default CharacterGrid
+export default CharacterGrid;

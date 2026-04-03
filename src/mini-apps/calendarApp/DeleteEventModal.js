@@ -1,20 +1,19 @@
 import React from 'react';
 
-export const DeleteEventModal = ({ onDelete, eventText, onClose }) => {
-  return(
+export function DeleteEventModal({ eventText, onDelete, onClose }) {
+  return (
     <>
-      <div id="deleteEventModal">
-        <h5>Event</h5>
-
-        <p id="eventText">{eventText}</p>
-
-        <button onClick={onDelete} id="deleteButton">Delete</button>
-        <button onClick={onClose} id="closeButton">Close</button>
+      <div className="cal-modal-backdrop" onClick={onClose} />
+      <div className="cal-modal">
+        <h5 className="cal-modal__title">Event</h5>
+        <p className="cal-modal__event-text">{eventText}</p>
+        <div className="cal-modal__actions">
+          <button className="cal-modal__btn cal-modal__btn--danger" onClick={onDelete}>Delete</button>
+          <button className="cal-modal__btn" onClick={onClose}>Close</button>
+        </div>
       </div>
-
-      <div id="modalBackDrop"></div>
     </>
   );
-};
+}
 
 export default DeleteEventModal;

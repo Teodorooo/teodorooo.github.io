@@ -1,59 +1,96 @@
-import React from 'react';
-import '../../App.css';
-import '../Button.css';
 import { Link } from 'react-router-dom';
+import '../../App.css';
 import backgroundvideo from '../../videos/video-compressed.mp4';
-import '../Cards.css'
-import sculpture from "../../images/Mr bean faces/sculpture.jpg";
-import sculpture_gold from "../../images/Mr bean faces/sculpture_gold.jpg";
-import { useState, useEffect } from "react";
+
+const projects = [
+  {
+    id: 1,
+    title: 'Calendar App',
+    description: 'Interactive monthly calendar with event creation and deletion, persisted in localStorage.',
+    tech: ['React', 'LocalStorage'],
+    link: '/calendar',
+    external: false,
+  },
+  {
+    id: 2,
+    title: 'Breaking Bad API',
+    description: 'Browse and search every Breaking Bad character with a flip-card UI.',
+    tech: ['React', 'Axios', 'REST API'],
+    link: '/bbapi',
+    external: false,
+  },
+  {
+    id: 3,
+    title: 'Photo Lightbox',
+    description: 'A fluid photo gallery grid with a full-screen animated lightbox viewer.',
+    tech: ['React'],
+    link: '/lightbox',
+    external: false,
+  },
+  {
+    id: 4,
+    title: 'Risk Game (Python)',
+    description: 'A Python-built Risk board game deployed live — playable directly below.',
+    tech: ['Python'],
+    link: 'https://risk-game-iuhi.onrender.com',
+    external: true,
+  },
+];
 
 function Projects() {
-  window.scrollTo(0, 0);
-  const [fade, setFade] = useState(false)
-  useEffect(() => {setFade(true);}, []);
+  return (
+    <div className="page-container">
+      <video src={backgroundvideo} loop autoPlay muted playsInline className="bgvideo" />
 
-  const card = 
-      {
-        id: 2,
-        revealed: sculpture_gold,
-        srcColoured: sculpture,
-        header: "Projects:",
-        subj: "This is my Risk python game",
-      }
-
-return (
-      <div className="cards">
-        <video src={backgroundvideo} loop autoPlay muted className="bgvideo" />
-
-        <div className="single-view">
-          <div className="image-stack">
-            {/* bottom fades out */}
-            <img
-              src={card.revealed}
-              alt=""
-              className={`cards__item__img behind ${fade ? "fade" : ""}`}
-            />
-            {/* top stays visible */}
-            <img
-              src={card.srcColoured || card.src}
-              alt=""
-              className="cards__item__img top"
-            />
-          </div>
-
-          <div className="text-block">
-            <h1>{card.header}</h1>
-            <h2>{card.subj}</h2>
-          </div>
-          <iframe 
-            src="https://risk-game-iuhi.onrender.com"
-            width="100%" 
-            height="800px"
-          ></iframe>
-        </div>
+      <div className="page-hero">
+        <h1>Projects</h1>
+        <p>Mini-apps, tools, and experiments.</p>
       </div>
-    );
-  }
 
-export default Projects
+      <div className="project-grid">
+        {projects.map(p =>
+          p.external ? (
+            <a
+              key={p.id}
+              href={p.link}
+              target="_blank"
+              rel="noreferrer"
+              className="project-card"
+            >
+              <div className="project-card__body">
+                <h3>{p.title}</h3>
+                <p>{p.description}</p>
+                <div className="project-card__tags">
+                  {p.tech.map(t => <span key={t} className="tag">{t}</span>)}
+                </div>
+              </div>
+              <span className="project-card__arrow">&#8599;</span>
+            </a>
+          ) : (
+            <Link key={p.id} to={p.link} className="project-card">
+              <div className="project-card__body">
+                <h3>{p.title}</h3>
+                <p>{p.description}</p>
+                <div className="project-card__tags">
+                  {p.tech.map(t => <span key={t} className="tag">{t}</span>)}
+                </div>
+              </div>
+              <span className="project-card__arrow">&#8594;</span>
+            </Link>
+          )
+        )}
+      </div>
+
+      <div className="risk-embed">
+        <h2>Risk Game &mdash; Live Preview</h2>
+        <iframe
+          src="https://risk-game-iuhi.onrender.com"
+          title="Risk Game"
+          className="risk-iframe"
+        />
+      </div>
+    </div>
+  );
+}
+
+export default Projects;
