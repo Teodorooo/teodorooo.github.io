@@ -4,27 +4,17 @@ import backgroundvideo from '../../videos/video-compressed.mp4';
 const videos = [
   {
     id: 1,
-    title: 'Terraform to Deploy a React App to AWS ECR',
-    stack: 'Terraform · Docker · AWS',
+    title: 'Coding Risk boardgame | Learn Python basics',
+    stack: 'Python · Pygame',
     points: [
-      'Multi-stage Dockerfile for optimized builds',
-      'Terraform pulls the image from AWS ECR',
-      'NGINX with load balancing & auto-scaling in the background',
-      'Repos linked in the video description',
+      'Pygame videogame tutorial',
+      'Data handling',
+      'Coding mindset',
+      'Object Oriented Programming (OOP)',
     ],
-    youtubeId: 'F6ikuuq0aaA',
+    youtubeId: 'ip61-1jj2Y0',
   },
-  {
-    id: 2,
-    title: 'React Overview — How It Works & Hooks',
-    stack: 'React',
-    points: [
-      'How React works under the hood',
-      'Full overview of hooks and the rendering model',
-      'Everything you need to start building with React',
-    ],
-    youtubeId: 'sy0IiiNEjHs',
-  },
+
 ];
 
 function Videos() {

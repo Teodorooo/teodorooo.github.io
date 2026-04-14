@@ -32,7 +32,7 @@ const projects = [
     title: 'Risk Game (Python)',
     description: 'A Python-built Risk board game deployed live — playable directly below.',
     tech: ['Python'],
-    link: 'https://risk-game-iuhi.onrender.com',
+    link: 'https://risk.teodoroesquerre.com',
     external: true,
   },
 ];
@@ -84,7 +84,7 @@ function Projects() {
       <div className="risk-embed">
         <h2>Risk Game &mdash; Live Preview</h2>
         <iframe
-          src="https://risk-game-iuhi.onrender.com"
+          src='https://risk.teodoroesquerre.com'
           title="Risk Game"
           className="risk-iframe"
         />
