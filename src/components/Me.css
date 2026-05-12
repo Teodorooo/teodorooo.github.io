@@ -1,0 +1,476 @@
+/* ============================================================
+   ME PAGE  /  portrait, kitchen gallery, farm, tech
+   ============================================================ */
+
+.me-page {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 5rem;
+}
+
+/* -------- HERO ------------------------------------------------ */
+
+.me-hero {
+  display: grid;
+  grid-template-columns: minmax(220px, 360px) 1fr;
+  gap: 3rem;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 2rem 4rem;
+}
+
+.me-hero__portrait {
+  margin-bottom: 0;
+  width: 100%;
+  max-width: 360px;
+  justify-self: center;
+}
+
+.me-hero__eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.85;
+  margin-bottom: 0.85rem;
+}
+
+.me-hero__name {
+  font-size: clamp(2.25rem, 5vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #fff;
+  margin-bottom: 0.85rem;
+}
+
+.me-hero__heritage {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1.1rem;
+  padding: 0.35rem 0.8rem 0.35rem 0.75rem;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.me-hero__heritage-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.me-hero__heritage-flags {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.me-hero__heritage-flags img {
+  display: block;
+  height: 14px;
+  width: auto;
+  max-width: 22px;
+  border-radius: 2px;
+  box-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.28);
+  transition: transform 0.2s var(--ease);
+}
+
+.me-hero__heritage-flags img:hover {
+  transform: translateY(-1px) scale(1.08);
+}
+
+.me-hero__tagline {
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  line-height: 1.5;
+  color: #e9e9e9;
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+}
+
+.me-hero__pitch {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--text-dim);
+}
+
+@media (max-width: 760px) {
+  .me-hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2rem;
+    padding-top: 4rem;
+  }
+}
+
+/* -------- SECTIONS -------------------------------------------- */
+
+.me-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3.5rem 2rem;
+}
+
+.me-section__head {
+  max-width: 640px;
+  margin-bottom: 2.25rem;
+}
+
+.me-section__kicker {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(95, 255, 89, 0.35);
+}
+
+.me-section__head h2 {
+  font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin-bottom: 0.9rem;
+}
+
+.me-section__head p {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-dim);
+}
+
+/* -------- KITCHEN GALLERY (masonry) --------------------------- */
+
+.kitchen-gallery {
+  column-count: 3;
+  column-gap: 1rem;
+}
+
+@media (max-width: 900px) { .kitchen-gallery { column-count: 2; } }
+@media (max-width: 520px) { .kitchen-gallery { column-count: 1; } }
+
+.kitchen-tile {
+  position: relative;
+  break-inside: avoid;
+  margin: 0 0 1rem;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  cursor: zoom-in;
+  outline: none;
+}
+
+.kitchen-tile:focus-visible {
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 2px var(--accent);
+}
+
+.kitchen-tile img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.7s var(--ease), filter 0.4s var(--ease);
+  filter: saturate(1.02);
+}
+
+.kitchen-tile figcaption {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  max-width: calc(100% - 20px);
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(0, 8, 20, 0.6);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  color: rgba(255, 255, 255, 0.94);
+  line-height: 1.25;
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.kitchen-tile__flag {
+  height: 11px;
+  width: auto;
+  max-width: 18px;
+  flex-shrink: 0;
+  border-radius: 1.5px;
+  box-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.22);
+  opacity: 0.95;
+}
+
+.kitchen-tile__name {
+  letter-spacing: 0.005em;
+}
+
+.kitchen-tile:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(95, 255, 89, 0.25),
+    0 0 28px var(--accent-glow);
+}
+
+.kitchen-tile:hover img {
+  transform: scale(1.045);
+  filter: saturate(1.12);
+}
+
+.kitchen-tile:hover figcaption {
+  background: rgba(0, 8, 20, 0.9);
+  border-color: rgba(95, 255, 89, 0.45);
+}
+
+/* -------- FARM GRID ------------------------------------------ */
+
+.farm-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  grid-auto-rows: 1fr;
+  gap: 1rem;
+}
+
+.farm-tile {
+  position: relative;
+  margin: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.farm-tile img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease);
+}
+
+.farm-tile:hover img {
+  transform: scale(1.04);
+}
+
+.farm-tile figcaption {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  padding: 0.35rem 0.85rem;
+  background: rgba(0, 8, 20, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.farm-tile--tall {
+  grid-row: span 2;
+}
+
+@media (max-width: 760px) {
+  .farm-grid {
+    grid-template-columns: 1fr;
+  }
+  .farm-tile--tall {
+    grid-row: auto;
+    aspect-ratio: 3 / 4;
+  }
+  .farm-tile { aspect-ratio: 4 / 3; }
+}
+
+/* -------- TECH SECTION (de-emphasized) ----------------------- */
+
+.me-section--tech {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 1rem;
+  padding-top: 4rem;
+}
+
+.me-section--tech .cv-img {
+  display: block;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* -------- entry animation ------------------------------------ */
+
+.me-page .me-section { opacity: 0; transform: translateY(14px); animation: meReveal 0.7s var(--ease) forwards; }
+.me-page .me-section:nth-of-type(1) { animation-delay: 0.05s; }
+.me-page .me-section:nth-of-type(2) { animation-delay: 0.18s; }
+.me-page .me-section:nth-of-type(3) { animation-delay: 0.30s; }
+
+@keyframes meReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .me-page .me-section { opacity: 1; transform: none; animation: none; }
+  .kitchen-tile, .kitchen-tile img, .farm-tile img { transition: none; }
+}
+
+/* -------- LIGHTBOX ------------------------------------------ */
+
+.me-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(2, 6, 14, 0.82);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  animation: lbFade 0.22s var(--ease);
+}
+
+@keyframes lbFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.me-lightbox__stage {
+  position: relative;
+  max-width: min(92vw, 1200px);
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  animation: lbPop 0.32s var(--ease);
+}
+
+@keyframes lbPop {
+  from { opacity: 0; transform: scale(0.96) translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.me-lightbox__stage img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(88vh - 4rem);
+  width: auto;
+  height: auto;
+  border-radius: var(--radius-md);
+  box-shadow: 0 32px 90px rgba(0, 0, 0, 0.7);
+  cursor: zoom-out;
+}
+
+.me-lightbox__caption {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1rem;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  background: rgba(0, 8, 20, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.96);
+  max-width: 92vw;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.me-lightbox__caption .kitchen-tile__flag {
+  height: 13px;
+  max-width: 22px;
+}
+
+.me-lightbox__count {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  padding-left: 0.6rem;
+  margin-left: 0.2rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.me-lightbox__nav,
+.me-lightbox__close {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: background 0.2s var(--ease), transform 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.me-lightbox__nav:hover,
+.me-lightbox__close:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(95, 255, 89, 0.4);
+}
+
+.me-lightbox__nav {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+}
+
+.me-lightbox__nav:hover {
+  transform: translateY(-50%) scale(1.05);
+}
+
+.me-lightbox__nav--prev { left: 1.25rem; }
+.me-lightbox__nav--next { right: 1.25rem; }
+
+.me-lightbox__close {
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 44px;
+  height: 44px;
+}
+
+@media (max-width: 600px) {
+  .me-lightbox { padding: 1rem; }
+  .me-lightbox__nav { width: 42px; height: 42px; }
+  .me-lightbox__nav--prev { left: 0.5rem; }
+  .me-lightbox__nav--next { right: 0.5rem; }
+  .me-lightbox__close { top: 0.75rem; right: 0.75rem; }
+}
